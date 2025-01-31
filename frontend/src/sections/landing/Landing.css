@@ -1,0 +1,20 @@
+.landing {
+    background-color: var(--mco);
+}
+
+.landing .landing-img img {
+    width: 250px;
+}
+
+.landing .landing-text p {
+    text-align: center !important;
+    width: 200px;
+}
+
+.landing .landing-text .book-btn {
+    width: fit-content;
+}
+
+.landing .landing-text .book-btn .book {
+    background-color: var(--sco);
+}
