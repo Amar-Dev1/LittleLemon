@@ -1,0 +1,22 @@
+.footer {
+    background-color: var(--mco);
+}
+
+.footer-logo img {
+    width: 150px;
+}
+
+.footer .info-title {
+    color: var(--sco);
+}
+
+.footer .reachus-title {
+    color: var(--sco);
+}
+
+.footer li,
+.footer a {
+    color: #eee;
+    font-weight: bold;
+    font-size: 18px;
+}

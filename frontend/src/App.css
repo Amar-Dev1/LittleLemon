@@ -15,10 +15,12 @@
     transform: scale(1.04);
     box-shadow: 5px 5px 15px #ddd;
 }
-.card-img img{
-    border-radius: 10px 10px 0 0 ;
+
+.card-img img {
+    border-radius: 10px 10px 0 0;
 }
-.card-body .card-title{
+
+.card-body .card-title {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -26,4 +28,26 @@
     right: 20px;
     bottom: 15px;
     color: var(--sco);
+}
+
+.review-card {
+    max-width: 220px;
+    max-height: 190px;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+}
+
+.review-card .user small {
+    bottom: -6px;
+    right: 30%;
+    font-size: 10px;
+}
+
+.review-card .text p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.review-card:hover {
+    max-height: 200px;
 }

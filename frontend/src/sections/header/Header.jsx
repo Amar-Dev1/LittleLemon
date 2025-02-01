@@ -14,8 +14,8 @@ const Header = () => {
           <Nav className="links my-4">
             <hr />
             <Nav.Link className='link rounded p-2 mx-2' href="/">Home</Nav.Link>
-            <Nav.Link className='link rounded p-2 mx-2' href="#about">About</Nav.Link>
             <Nav.Link className='link rounded p-2 mx-2' href="#menu">Menu</Nav.Link>
+            <Nav.Link className='link rounded p-2 mx-2' href="#about">About</Nav.Link>
             <Nav.Link className='link rounded p-2 mx-2' href="/reservations">Reservations</Nav.Link>
             <Nav.Link className='link rounded p-2 mx-2' href="/login">Login</Nav.Link>
           </Nav>
