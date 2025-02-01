@@ -1,13 +1,12 @@
-import { Header,Landing,Menu,Reviews,About,Footer } from '../../../index';
+import { Landing, Menu, Reviews, About, Footer } from '../../../index';
 const HomePage = () => {
     return (
         <>
-            <Header />
-            <Landing/>
-            <Menu/>
-            <Reviews/>
-            <About/>
-            <Footer/>
+            <Landing />
+            <Menu />
+            <Reviews />
+            <About />
+            <Footer />
         </>
     )
 }
