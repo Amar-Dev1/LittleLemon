@@ -1,0 +1,35 @@
+.reservations .steps {
+    margin-top: 30px;
+}
+
+.reservations .steps .step {
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+
+.reservations .steps .step::before {
+    content: '';
+    position: absolute;
+    background-color: var(--mco);
+    width: 100%;
+    height: 100%;
+    transform: rotate(45deg);
+    border-radius: 5px;
+    z-index: -1;
+}
+
+.reservations .form-wrapper {
+    background-color: var(--bg);
+    margin-top: 30px;
+}
+
+/* reservation-form */
+.reservation-form {
+    position: relative;
+}
+
+.reservation-form button {
+    width: fit-content;
+    background-color: var(--mco) !important;
+}

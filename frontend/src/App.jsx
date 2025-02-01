@@ -1,9 +1,16 @@
 import './App.css';
-import { HomePage } from '../index';
+import { Header, HomePage, Reservations } from '../index';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <>
-      <HomePage />
+      <BrowserRouter>
+      <Header/>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='reservations' element={<Reservations/>} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
