@@ -1,4 +1,4 @@
-import { Header,Landing,Menu,Reviews } from '../../../index';
+import { Header,Landing,Menu,Reviews,About,Footer } from '../../../index';
 const HomePage = () => {
     return (
         <>
@@ -6,6 +6,8 @@ const HomePage = () => {
             <Landing/>
             <Menu/>
             <Reviews/>
+            <About/>
+            <Footer/>
         </>
     )
 }
