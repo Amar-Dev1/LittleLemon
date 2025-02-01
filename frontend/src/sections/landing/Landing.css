@@ -12,9 +12,14 @@
 }
 
 .landing .landing-text .book-btn {
-    width: fit-content;
+ 
 }
 
 .landing .landing-text .book-btn .book {
     background-color: var(--sco);
+}
+@media (max-width:768px) {
+    .landing .landing-text .book-btn{
+        bottom: -20px;
+    }
 }
