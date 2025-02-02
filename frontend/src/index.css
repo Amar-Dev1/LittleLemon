@@ -21,3 +21,6 @@ a {
 li {
     list-style-type: none;
 }
+input::placeholder, select::placeholder{
+    font-size: 14px;
+}
