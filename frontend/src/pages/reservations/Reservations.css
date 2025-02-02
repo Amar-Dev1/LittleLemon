@@ -24,12 +24,52 @@
     margin-top: 30px;
 }
 
+.active-form {
+    color: var(--sco) !important;
+}
+
 /* reservation-form */
 .reservation-form {
     position: relative;
 }
 
-.reservation-form button {
+.reservations button {
     width: fit-content;
-    background-color: var(--mco) !important;
+    background-color: var(--mco);
+    border: none;
+    outline: none;
+    font-weight: bold;
+}
+
+.reservations .rest-btn {
+    color: var(--mco);
+    background-color: transparent;
+    border: 2px solid var(--mco);
+}
+
+/* review form */
+.review-form {
+    min-width: 350px;
+}
+
+.review-form .review-row {
+    background-color: var(--mco);
+}
+
+.review-form .review-img img {
+    max-width: 100px;
+}
+
+.review-form .review-info h4 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.review-form .review-info p {
+    font-size: 14px
+}
+/* reserve-complete */
+.reserve-complete a{
+    background-color: var(--mco);
+    
 }

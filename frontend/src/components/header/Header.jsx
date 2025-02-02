@@ -11,13 +11,12 @@ const Header = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" className='bar' />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-          <Nav className="links my-4">
-            <hr />
+          <Nav className="links py-4">
             <Nav.Link className='link rounded p-2 mx-2' href="/">Home</Nav.Link>
             <Nav.Link className='link rounded p-2 mx-2' href="/#menu">Menu</Nav.Link>
             <Nav.Link className='link rounded p-2 mx-2' href="/#about">About</Nav.Link>
-            <Nav.Link className='link rounded p-2 mx-2' href="/reservations">Reservations</Nav.Link>
-            <Nav.Link className='link rounded p-2 mx-2' href="/login">Login</Nav.Link>
+            <Nav.Link className='link rounded p-2 mx-2' href="reservations">Reservations</Nav.Link>
+            <Nav.Link className='link rounded p-2 mx-2' href="login">Login</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

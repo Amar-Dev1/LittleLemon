@@ -1,0 +1,19 @@
+.login{
+    height: 90vh;
+}
+.login-wrapper{
+    background-color: var(--bg);
+    width: 50%;
+}
+.login-wrapper .login-btn button{
+    transition: .3s;
+}
+.login-wrapper .login-btn button:hover{
+    background-color: var(--mco);
+    color: #eee;
+}
+@media (max-width:768px) {
+    .login-wrapper{
+        width: 80%;
+    }
+}
