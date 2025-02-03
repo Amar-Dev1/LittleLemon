@@ -2,11 +2,25 @@ import './Reservations.css';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../components/hooks/useAuth';
 import logoImg from '../../assets/footer-logo.svg';
 import { FaCheckCircle } from "react-icons/fa";
+import axios from 'axios';
 
 const Reservations = () => {
-    const [active, setActive] = useState(3)
+    const isAuthenticated = useAuth();
+    if (!isAuthenticated) {
+        return (
+            <Container style={{ height: '85vh' }} className='d-flex justify-content-center align-items-center'>
+                <div style={{ width: '80%', height: '80%', backgroundColor: 'aliceblue' }} className="auth-message d-flex flex-column justify-content-center align-items-center text-center p-3 rounded-4">
+                    <h2 className='my-3'>You must to login first 😉</h2>
+                    <Link to={'/login'} className='btn btn-warning rounded-3'>Login</Link>
+                </div>
+            </Container>
+        )
+    }
+
+    const [active, setActive] = useState(1)
     const [formDate, setFormDate] = useState({ name: '', email: '', mobile: '', date: '', time: '', guests: '1' })
     useEffect(() => {
         setActive(1)
@@ -30,6 +44,7 @@ const Reservations = () => {
 export default Reservations;
 
 export const ReservationForm = ({ setActive, formDate, setFormDate }) => {
+
     useEffect(() => {
         setActive(1);
     }, [setActive]);
@@ -44,6 +59,7 @@ export const ReservationForm = ({ setActive, formDate, setFormDate }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setActive(2);
+
     };
 
     return (
@@ -108,16 +124,47 @@ export const ReservationForm = ({ setActive, formDate, setFormDate }) => {
 };
 
 export const ReviewForm = ({ setActive, formData }) => {
+
+    const [message, setMessage] = useState('');
+
     useEffect(() => {
         setActive(2);
     }, [setActive]);
 
-    const backStep = () => {
-        setActive(1)
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // make post request 
+        try {
+            const token = localStorage.getItem('token')
+            const response = await axios.post('', {
+                name: formData.name,
+                email: formData.email,
+                mobile: formData.mobile,
+                date: formData.date,
+                time: formData.time,
+                guests: formData.guests,
+            },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    }
+                }
+            );
+            if (response.status === 200) {
+                setMessage('Reservation successful!');
+                console.log('reserve successful ✅')
+                setActive(3)
+            } else {
+                setMessage('Something went wrong. Please try again.');
+            }
+        } catch (err) {
+            console.error('Reserve failed ❌', err.response?.data);
+            setMessage('Something went wrong. Please try again.');
+        }
+
     }
-    const nextStep = () => {
-        setActive(3)
-    }
+
     return (
         <Container className='review-form my-2 p-3 rounded-3'>
             <h4 className='my-3 fw-bold'>Review you reserve:</h4>
@@ -129,10 +176,12 @@ export const ReviewForm = ({ setActive, formData }) => {
                 </Col>
                 <Col lg={6} md={6} sm={12} className='d-flex justify-content-center align-items-center text-light'>
                     <div className="review-info d-flex flex-column">
-                        <div className="name">
-                            <h4>Reservation for:</h4>
-                            <p>{formData.name}</p>
-                        </div>
+                        <Form onSubmit={handleSubmit}>
+                            <div className="name">
+                                <h4>Reservation for:</h4>
+                                <p>{formData.name}</p>
+                            </div>
+                        </Form>
                         <div className="guests">
                             <h4>No. of Guests:</h4>
                             <p>{formData.guests}</p>
@@ -150,17 +199,18 @@ export const ReviewForm = ({ setActive, formData }) => {
                             <p>{formData.email}</p>
                         </div>
                         <div className="submit-review d-flex justify-content-end">
-                            <Button className='m-1 bg-light text-dark' onClick={() => backStep()}>
+                            <Button className='m-1 bg-light text-dark' onClick={() => setActive(1)}>
                                 Back
                             </Button>
-                            <Button className='m-1 bg-light text-dark' onClick={() => nextStep()}>
+                            <Button className='m-1 bg-light text-dark' onClick={handleSubmit}>
                                 Submit
                             </Button>
-
                         </div>
                     </div>
                 </Col>
             </Row>
+            <p className='text-danger fw-bold my-2'>{message}</p>
+
         </Container>
     )
 }
