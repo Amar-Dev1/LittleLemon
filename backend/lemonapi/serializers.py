@@ -1,5 +1,19 @@
 from rest_framework import serializers
 from .models import Menu, Booking
+# from djoser.serializers import UserCreateSerializer
+# from django.contrib.auth import get_user_model
+
+
+# class CustomUserCreateSerializer(UserCreateSerializer):
+#     class Meta:
+#         model = get_user_model()
+#         fields = ('id', 'username', 'email', 'password')
+    
+#     def create(self, validated_data):
+#         username = validated_data.get("username")
+#         if not username:
+#             raise serializers.ValidationError({'username': 'This field is required.'})
+#         return super().create(validated_data)
 
 
 class MenuItemSerializer(serializers.ModelSerializer):

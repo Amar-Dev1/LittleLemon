@@ -1,41 +1,49 @@
 import { useRef, useState } from 'react';
 import './Login.css';
-import { AccordionBody, Container, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Container, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { RiErrorWarningLine } from "react-icons/ri";
 import { FaCheckCircle } from 'react-icons/fa';
 import axios from 'axios';
 
 const Login = () => {
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(null);
 
-    const navigate = useNavigate()
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         setError(null)
-
+        setMessage(null)
         // login the user
         try {
-            const response = await axios.post("", {
-                email,
+            const response = await axios.post("http://127.0.0.1:8000/api/auth/token/", {
+                username,
                 password,
             });
+            const { access, refresh } = response.data
             console.log("logged in successfully ✅", response.data)
-            // store the token in local storage
-            localStorage.setItem('token', response.data.toekn);
-            // navigate to the home page 
-            navigate('/')
+
+            if (access) {
+                localStorage.setItem('access_token', access)
+                console.log("access token saved successfully ✅");
+            }
+            if (refresh) {
+                localStorage.setItem('refresh_token', refresh)
+                console.log("Refresh token saved successfully ✅");
+            }
+            window.location.href = '/'
 
         } catch (err) {
             console.error("login faild ❌", err.response?.data)
-            setError(err.response?.message || 'login faild ❌')
+            if (err.response) {
+                setError(err.response.data?.detail || 'login faild ❌')
+            } else {
+                setError("Something went wrong. Please try again.");
+            }
             setMessage("Something went wrong! .Please try again.")
         }
-        // navigate to the home page
     }
 
     return (
@@ -46,8 +54,8 @@ const Login = () => {
             <div className="login-wrapper p-4 rounded-3">
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className='mb-3'>
-                        <Form.Label htmlFor='email'>Email Address</Form.Label>
-                        <Form.Control type='email' placeholder='Email' required onChange={(e) => setEmail(e.target.value)}>
+                        <Form.Label htmlFor='username'>Username</Form.Label>
+                        <Form.Control type='text' placeholder='username' required onChange={(e) => setUsername(e.target.value)}>
                         </Form.Control>
                     </Form.Group>
 
@@ -91,20 +99,21 @@ export const Signup = () => {
 
     const emailRef = useRef(null)
     const passRef = useRef(null)
-    // navigation
-    const navigate = useNavigate()
 
     // input data states
-    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(null);
 
+    
+    
     const handleSubmit = async (e) => {
         e.preventDefault()
         setError(null)
+        setMessage(null)
         // validate email
         const emailValue = emailRef.current.value;
         setEmailInput(emailValue)
@@ -117,17 +126,25 @@ export const Signup = () => {
         setPassTouched(passValue)
         // make post request
         try {
-            const response = await axios.post('', {
-                name,
+            const response = await axios.post('http://127.0.0.1:8000/api/auth/users/', {
                 email,
+                username,
                 password,
             });
             // navigate to login after successful sign up ✅
-            navigate('/login')
+            console.log("successfully signed up ✅", response.data)
+            setMessage("successfully signed up ✅")
+            window.location.href = '/login';
         } catch (err) {
-            console.error("signup faild ❌", err.response?.data)
-            setError("err.response?.data?.message" || 'signup faild ❌')
-            setMessage("Something went wrong! .Please try again.")
+            const errorData = err.response?.data;
+            if (errorData) {
+                if (errorData.username) {
+                    setMessage(errorData.username[0])
+                }
+                else if (typeof errorData === 'string') {
+                    setMessage(errorData)
+                }
+            }
         }
     }
     return (
@@ -138,8 +155,8 @@ export const Signup = () => {
             <div className="login-wrapper p-4 rounded-3">
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className='mb-3'>
-                        <Form.Label htmlFor='name'>Full name</Form.Label>
-                        <Form.Control type='text' placeholder='Full Name' required onChange={(e => setName(e.target.value))}>
+                        <Form.Label htmlFor='name'>Username</Form.Label>
+                        <Form.Control type='text' placeholder='Username' required onChange={(e => setUsername(e.target.value))}>
                         </Form.Control>
                     </Form.Group>
                     <Form.Group className='mb-3'>
@@ -169,7 +186,7 @@ export const Signup = () => {
                         <button className='px-3 py-2 m-2 rounded-3 fw-bold outline-none'>
                             SignUp !
                         </button>
-                        <span className='text-danger my-2'>{message}</span>
+                        <span className='text-dark my-2'>{message}</span>
                     </div>
                 </Form>
 

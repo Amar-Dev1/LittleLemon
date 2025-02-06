@@ -1,20 +1,24 @@
 import '../App.css';
 import { MdOutlineDeliveryDining } from "react-icons/md";
+import { Card, CardText } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 function MenuItem({ menuImg, menuTitle, menuDes, menuPrice }) {
     return (
-        <div className="card rounded-3 position-relative">
-            <div className="card-img ">
-                <img src={menuImg} alt="" className='w-100' />
-            </div>
-            <div className="card-body p-3">
-                <h5 className="card-title">{menuTitle}</h5>
-                <span className='price fw-bold position-absolute'><span className='text-success'>$</span>{menuPrice}</span>
-                <p className='my-3'>{menuDes}</p>
-            </div>
-            <div className="card-footer p-3">
-                <a href='/reservations' className='fw-bold text-dark'>Order a delivery <MdOutlineDeliveryDining /></a>
-            </div>
-        </div>
+        <Card style={{ width: '18rem', height: '360px' }} className='shadow'>
+            <Card.Img variant="top" style={{ width: '100%', height: '50%', objectFit: 'cover' }} src={menuImg} />
+            <Card.Body>
+                <Card.Title>{menuTitle}</Card.Title>
+                <Card.Text style={{ fontSize: "12px" }} className='text-muted'>
+                    {menuDes}
+                </Card.Text>
+            </Card.Body>
+            <Card.Footer className='d-flex justify-content-between'>
+                <Link to={'/reservations'} className='fw-bold text-dark'>Order a delivery <MdOutlineDeliveryDining /></Link>
+                <CardText className='price fw-bold'>
+                    <span className='text-success'>$</span>{menuPrice}
+                </CardText>
+            </Card.Footer>
+        </Card>
     );
 }
 

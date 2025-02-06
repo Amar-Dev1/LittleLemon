@@ -13,4 +13,4 @@ export { default as Footer } from './src/components/footer/Footer';
 export { default as HomePage } from './src/pages/Home/HomePage';
 export { default as Reservations } from './src/pages/reservations/Reservations';
 export {default as Login} from './src/pages/Login/Login';
-// export {default as Logout} from './src/pages/Logout/Logout';
+export {default as Logout} from './src/pages/Logout/Logout';

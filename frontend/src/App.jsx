@@ -1,5 +1,5 @@
 import './App.css';
-import { Header, HomePage, Reservations, Login } from '../index';
+import { Header, HomePage, Reservations, Login,Logout } from '../index';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Signup } from './pages/Login/Login';
 function App() {
@@ -9,9 +9,10 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='reservations' element={<Reservations />} />
-          <Route path='signup' element={<Signup/>}/>
-          <Route path='login' element={<Login />} />
+          <Route path='/reservations' element={<Reservations />} />
+          <Route path='/signup' element={<Signup/>}/>
+          <Route path='/login' element={<Login />} />
+          <Route path='/logout' element={<Logout />} />
         </Routes>
       </BrowserRouter>
     </>
