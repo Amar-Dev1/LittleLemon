@@ -1,6 +1,6 @@
-const useAuth = () => {
-const token = localStorage.getItem('token');
-return !!token;
+const UseAuth = () => {
+    const refresh = localStorage.getItem('refresh_token');
+    return !!refresh;
 }
 
-export default useAuth;
+export default UseAuth;
