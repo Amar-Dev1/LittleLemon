@@ -1,8 +1,8 @@
 import './Header.css';
 import logo from '../../assets/logo.svg';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { IoIosLogOut, IoIosSad } from "react-icons/io";
-import UseAuth from '../hooks/UseAuth';
+import { IoIosLogOut } from "react-icons/io";
+import UseAuth from '../hooks/UseAuth'
 
 const Header = () => {
   const isAuthenticated = UseAuth();
