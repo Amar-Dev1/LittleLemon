@@ -26,12 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-btlvo0ran*nn58vv$%!&g^i$jo*%pjic#@@fm7gjqz9n9$!g7c"
+SECRET_KEY = os.getenv("SECRET_KEY", "SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "FALSE") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOST", "").split(",")
 
 
 # Application definition
@@ -161,9 +161,7 @@ REST_FRAMEWORK = {
         "user": "100/minute",
     },
 }
-DJOSER = {
-
-}
+DJOSER = {}
 
 from datetime import timedelta
 
@@ -175,4 +173,6 @@ SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
+CSRF_TRUSTED_ORIGINS =[
+    f'https://{host}' for host in ALLOWED_HOSTS if host
+]
