@@ -3,9 +3,15 @@ import logo from '../../assets/logo.svg';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { IoIosLogOut } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
-import UseAuth from '../hooks/UseAuth'
+// import UseAuth from '../hooks/UseAuth'
 
 const Header = () => {
+
+  const UseAuth = () => {
+    const refresh = localStorage.getItem('refresh_token');
+    return !!refresh;
+}
+
   const isAuthenticated = UseAuth();
   return (
     <Navbar expand="lg" className="nav-wrapper py-1">
