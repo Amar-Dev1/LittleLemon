@@ -1,5 +1,5 @@
 # LittleLemon
 ## Meta-backend developer capstone
-## ✅ Made by:
+## ✅ Made using :
 React.js ⚡
 Django ✨
