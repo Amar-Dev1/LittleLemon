@@ -2,17 +2,16 @@ import './Reservations.css';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {UseAuth} from '../../../index';
 import logoImg from '../../assets/footer-logo.svg';
 import { FaCheckCircle } from "react-icons/fa";
 import axios from 'axios';
 
 const Reservations = () => {
 
-//   const UseAuth = () => {
-//     const refresh = localStorage.getItem('refresh_token');
-//     return !!refresh;
-// }
+  const UseAuth = () => {
+    const refresh = localStorage.getItem('refresh_token');
+    return !!refresh;
+}
 
   const isAuthenticated = UseAuth();
   if (!isAuthenticated) {
