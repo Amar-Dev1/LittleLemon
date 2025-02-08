@@ -143,7 +143,7 @@ export const ReviewForm = ({ setActive, formData }) => {
         return;
       }
 
-      const response = await axios.post('http://127.0.0.1:8000/api/booking/', {
+      const response = await axios.post('https://devamar.pythonanywhere.com/api/booking/', {
         name: formData.name,
         email: formData.email,
         mobile: formData.mobile,

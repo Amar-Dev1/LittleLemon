@@ -15,7 +15,7 @@ const Logout = () => {
                 console.log('no refresh token found')
                 return;
             }
-            await axios.post("http://127.0.0.1:8000/api/auth/token/blacklist/", {
+            await axios.post("https://devamar.pythonanywhere.com/api/auth/token/blacklist/", {
                 refresh: refreshToken
             });
             localStorage.removeItem("access_token");

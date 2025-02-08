@@ -14,7 +14,7 @@ const Profile = () => {
         const access = localStorage.getItem('access_token')
         const refresh = localStorage.getItem('refresh_token');
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/auth/users/', {
+            const response = await axios.get('https://devamar.pythonanywhere.com/api/auth/users/', {
                 headers: {
                     Authorization: `Bearer ${access}`
                 }
@@ -33,7 +33,7 @@ const Profile = () => {
     const fetchUserBooking = async () => {
         try {
             const accessToken = localStorage.getItem('access_token')
-            const response = await axios.get('http://127.0.0.1:8000/api/booking/', {
+            const response = await axios.get('https://devamar.pythonanywhere.com/api/booking/', {
                 headers: { Authorization: `Bearer ${accessToken}` }
             });
             setBookings(response.data)
@@ -47,7 +47,7 @@ const Profile = () => {
 
         try {
             const accessToken = localStorage.getItem('access_token');
-            const response = await axios.delete(`http://127.0.0.1:8000/api/booking/${bookingId}/`, {
+            const response = await axios.delete(`https://devamar.pythonanywhere.com/booking/${bookingId}/`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }

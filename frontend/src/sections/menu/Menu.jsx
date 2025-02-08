@@ -19,7 +19,7 @@ const Menu = () => {
 
   const fetchmenuItems = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/menu-items');
+      const response = await axios.get('https://devamar.pythonanywhere.com/api/menu-items');
       console.log('✅ API Response:', response.data);
       setMenuItems(response.data.results || response.data);
       setLoading(false);

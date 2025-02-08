@@ -18,7 +18,7 @@ const Login = () => {
         setMessage(null)
         // login the user
         try {
-            const response = await axios.post("http://127.0.0.1:8000/api/auth/token/", {
+            const response = await axios.post("https://devamar.pythonanywhere.com/api/auth/token/", {
                 username,
                 password,
             });
@@ -126,7 +126,7 @@ export const Signup = () => {
         setPassTouched(passValue)
         // make post request
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/auth/users/', {
+            const response = await axios.post('https://devamar.pythonanywhere.com/api/auth/users/', {
                 email,
                 username,
                 password,
