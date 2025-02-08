@@ -1,0 +1,9 @@
+.profile .user-title {
+    background-color: var(--sco);
+}
+
+.profile .user-info .info-details,
+.profile .user-bookings .booking-details {
+    background-color: aliceblue;
+    width: 100%;
+}

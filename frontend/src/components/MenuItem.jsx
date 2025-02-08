@@ -1,5 +1,5 @@
 import '../App.css';
-import { MdOutlineDeliveryDining } from "react-icons/md";
+import { MdTableBar } from "react-icons/md";
 import { Card, CardText } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 function MenuItem({ menuImg, menuTitle, menuDes, menuPrice }) {
@@ -13,7 +13,7 @@ function MenuItem({ menuImg, menuTitle, menuDes, menuPrice }) {
                 </Card.Text>
             </Card.Body>
             <Card.Footer className='d-flex justify-content-between'>
-                <Link to={'/reservations'} className='fw-bold text-dark'>Order a delivery <MdOutlineDeliveryDining /></Link>
+                <Link to={'/reservations'} className='fw-bold text-dark'>reserve a table <MdTableBar /></Link>
                 <CardText className='price fw-bold'>
                     <span className='text-success'>$</span>{menuPrice}
                 </CardText>

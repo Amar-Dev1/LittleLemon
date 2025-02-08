@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from uuid import uuid4
 # Create your models here.
 class Menu(models.Model):
     title = models.CharField(max_length=50)
@@ -13,13 +13,14 @@ class Menu(models.Model):
 
 
 class Booking(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE,default=1)
+    id = models.UUIDField(primary_key=True,default=uuid4,editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     mobile = models.CharField(max_length=15, unique=True)
     date = models.DateField()
     time = models.TimeField()
-    guests = models.IntegerField(max_length=2)
+    guests = models.IntegerField()
 
     def __str__(self):
         return self.name

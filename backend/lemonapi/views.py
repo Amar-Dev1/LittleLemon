@@ -25,10 +25,14 @@ class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
 class BookingView(viewsets.ModelViewSet):
     serializer_class = BookingSerializer
     permission_classes = [permissions.IsAuthenticated]
-
+    lookup_field ='id'
     def get_queryset(self):
         if self.request.user.is_superuser or self.request.user.is_staff:
             queryset = Booking.objects.all()
         else:
             queryset = Booking.objects.filter(user=self.request.user)
         return queryset
+
+    def perform_create(self,serializer):
+        serializer.save(user=self.request.user)
+        
