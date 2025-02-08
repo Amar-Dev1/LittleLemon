@@ -1,6 +1,7 @@
 // components
 export { default as MainTitle } from './src/components/MainTitle';
 export { default as MenuItem } from './src/components/MenuItem';
+export {default as UseAuth} from './src/components/hooks/UseAuth'
 
 // sections
 export { default as Header } from './src/components/header/Header';
