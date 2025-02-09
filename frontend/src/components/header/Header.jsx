@@ -3,6 +3,7 @@ import logo from '../../assets/logo.svg';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { IoIosLogOut } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 // import UseAuth from '../hooks/UseAuth'
 
 const Header = () => {
@@ -22,10 +23,12 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" className='bar' />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav className="links py-4">
-            <Nav.Link className='link rounded p-2 mx-2' href="/">Home</Nav.Link>
+            {/* <Nav.Link className='link rounded p-2 mx-2' href="/">Home</Nav.Link> */}
+            <Link to={'/'} className='link rounded p-2 mx-2'>Home</Link>
             <Nav.Link className='link rounded p-2 mx-2' href="/#menu">Menu</Nav.Link>
             <Nav.Link className='link rounded p-2 mx-2' href="/#about">About</Nav.Link>
-            <Nav.Link className='link rounded p-2 mx-2' href="reservations">Reserve</Nav.Link>
+            {/* <Nav.Link className='link rounded p-2 mx-2' href="reservations">Reserve</Nav.Link> */}
+            <Link to={'/reservations'} className='link rounded p-2 mx-2'>Reserve</Link>
             {isAuthenticated ? (
               <>
                 <Nav.Link className='link rounded py-1 px-3 mx-2' href="profile"><FaRegUser /></Nav.Link>
