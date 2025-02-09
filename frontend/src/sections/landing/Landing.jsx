@@ -2,6 +2,7 @@ import './Landing.css';
 import MainTitle from '../../components/MainTitle';
 import { Col, Container, Row } from 'react-bootstrap';
 import landingImg from '../../assets/landing-img.png';
+import { Link } from 'react-router-dom';
 const Landing = () => {
 
 let landingTitle = {
@@ -16,7 +17,7 @@ let landingTitle = {
                         <h5 className='place d-block text-light'>Chicago</h5>
                         <p className='text-light fw-bold align-self-center'>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
                         <div className="book-btn my-3 mx-auto">
-                            <a href="reservations" className='book p-2 text-dark fw-bold rounded'>Reserve a Table</a>
+                            <Link to={'/reservations'} className='book p-2 text-dark fw-bold rounded'>Reserve a Table</Link>
                         </div>
                     </div>
                 </Col>

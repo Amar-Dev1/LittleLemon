@@ -11,7 +11,7 @@ const Reservations = () => {
   const UseAuth = () => {
     const refresh = localStorage.getItem('refresh_token');
     return !!refresh;
-}
+  }
 
   const isAuthenticated = UseAuth();
   if (!isAuthenticated) {

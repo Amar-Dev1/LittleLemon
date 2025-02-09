@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import './Login.css';
 import { Container, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { RiErrorWarningLine } from "react-icons/ri";
 import { FaCheckCircle } from 'react-icons/fa';
 import axios from 'axios';
@@ -87,6 +87,9 @@ const Login = () => {
 export default Login;
 
 export const Signup = () => {
+
+    const navigate = useNavigate()
+
     // validation
     const [emailInput, setEmailInput] = useState('');
     const [passInput, setPassInput] = useState('');
@@ -108,8 +111,8 @@ export const Signup = () => {
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(null);
 
-    
-    
+
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         setError(null)
@@ -134,7 +137,7 @@ export const Signup = () => {
             // navigate to login after successful sign up ✅
             console.log("successfully signed up ✅", response.data)
             setMessage("successfully signed up ✅")
-            window.location.href = '/login';
+            navigate('/lgoin')
         } catch (err) {
             const errorData = err.response?.data;
             if (errorData) {
