@@ -137,7 +137,7 @@ export const Signup = () => {
             // navigate to login after successful sign up ✅
             console.log("successfully signed up ✅", response.data)
             setMessage("successfully signed up ✅")
-            navigate('/lgoin')
+            navigate('/login')
         } catch (err) {
             const errorData = err.response?.data;
             if (errorData) {
