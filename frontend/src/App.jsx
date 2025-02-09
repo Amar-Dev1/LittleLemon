@@ -9,11 +9,11 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/reservations' element={<Reservations />} />
-          <Route path='/signup' element={<Signup/>}/>
-          <Route path='/login' element={<Login />} />
-          <Route path='/logout' element={<Logout />} />
-          <Route path='/profile' element={<Profile />} />
+          <Route path='reservations' element={<Reservations />} />
+          <Route path='signup' element={<Signup/>}/>
+          <Route path='login' element={<Login />} />
+          <Route path='logout' element={<Logout />} />
+          <Route path='profile' element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </>
