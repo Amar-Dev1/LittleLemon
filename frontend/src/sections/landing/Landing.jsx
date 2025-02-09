@@ -16,7 +16,7 @@ let landingTitle = {
                         <h5 className='place d-block text-light'>Chicago</h5>
                         <p className='text-light fw-bold align-self-center'>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
                         <div className="book-btn my-3 mx-auto">
-                            <a href="/reservations" className='book p-2 text-dark fw-bold rounded'>Reserve a Table</a>
+                            <a href="reservations" className='book p-2 text-dark fw-bold rounded'>Reserve a Table</a>
                         </div>
                     </div>
                 </Col>
