@@ -3,6 +3,7 @@ import './Profile.css';
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaBookmark, FaRegUser } from "react-icons/fa";
 import { MdTableBar } from "react-icons/md";
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 const Profile = () => {
     const [userName, setUserName] = useState('');
@@ -105,8 +106,8 @@ const Profile = () => {
                                     ))
                                 ) : (
                                     <>
-                                        <p>no bookings added</p>
-                                        <a href="/reservations" className='text-dark bg-warning py-1 px-3 rounded-3 fw-bold'>go reserve a table !</a>
+                                        <p>no bookings added</p>                                  
+                                    <Link to={'reservations'} className='text-dark bg-warning py-1 px-3 rounded-3 fw-bold'>go reserve a table !</Link>
                                     </>
                                 )
                             }
