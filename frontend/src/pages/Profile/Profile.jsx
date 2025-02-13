@@ -81,7 +81,7 @@ const Profile = () => {
                             <p>{userName}</p>
                             <h5 className='fw-bold'>Email:</h5>
                             <p>{userEmail}</p>
-                            <a href="/logout" className='py-2 px-4 bg-danger rounded-3 text-light'>Logout</a>
+                            <Link to={'/logout'} className='py-2 px-4 bg-danger rounded-3 text-light'>Logout</Link>
                         </div>
                     </div>
                 </Col>
@@ -107,7 +107,7 @@ const Profile = () => {
                                 ) : (
                                     <>
                                         <p>no bookings added</p>                                  
-                                    <Link to={'reservations'} className='text-dark bg-warning py-1 px-3 rounded-3 fw-bold'>go reserve a table !</Link>
+                                    <Link to={'/reservations'} className='text-dark bg-warning py-1 px-3 rounded-3 fw-bold'>go reserve a table !</Link>
                                     </>
                                 )
                             }
